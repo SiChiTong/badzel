@@ -110,7 +110,6 @@ cmake_this_new_http_archive = repository_rule(
     local=True,
     attrs={
         "url": attr.string(mandatory=True),
-        "cmake_path": attr.string(mandatory=True),
         "sha256": attr.string(mandatory=True),
         "strip_prefix": attr.string(mandatory=True),
         "deps": attr.string_list(default=[]),
@@ -122,8 +121,10 @@ cmake_this_new_http_archive = repository_rule(
 )
 """
 Downloads a Bazel repository as a compressed archive file, decompresses it,
-builds under CMake, and makes its targets available for binding.
+configures build with CMake, builds under make, and makes its targets available for binding.
 
 It supports the following file extensions: `"zip"`, `"jar"`, `"war"`, `"tar"`,
 `"tar.gz"`, `"tgz"`, `"tar.xz"`, and `tar.bz2`.
+
+Requires that cmake and make are installed on the host system.
 """
